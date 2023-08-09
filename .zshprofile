@@ -6,6 +6,12 @@ EDITOR="/usr/bin/vim"
 
 export PATH=$PATH:$DCTOOLS_DIR/bin
 
+SECRETS_PATH="${DCTOOLS_DIR}/.secrets"
+
+if [ "${SECRETS_PATH}" ]; then
+  source $SECRETS_PATH
+fi
+
 # Docker
 alias dc="docker compose"
 alias docker-compose="docker compose"
@@ -187,9 +193,12 @@ function airelease {
 export PATH=$PATH:/usr/local/go/bin
 
 # ChatGPT
-export OPENAI_API_KEY="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"
-
 gpt() {
+  if [ -z "${OPENAI_API_KEY}" ]; then
+    echo "Missing OPENAI_API_KEY env variable"
+    exit 1
+  fi
+
   case "${1}" in
       "chat")
           sgpt --chat $$ "${2}"
