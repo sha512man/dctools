@@ -49,6 +49,7 @@ function dive {
 alias c="clear"
 alias e="exit"
 alias dctools="dc-tools"
+alias l="exa --long --header --all"
 alias howto="code ~/dev/howto && exit"
 alias sysupdate="sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo apt autoclean -y && sudo apt autoremove -y"
 alias lock="gnome-screensaver-command -l"
